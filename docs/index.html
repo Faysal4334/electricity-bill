@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>বিদ্যুৎ বিল চেক করুন</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 30px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>বিদ্যুৎ বিল চেক করুন</h2>
+    <input type="text" id="roomId" placeholder="রুম আইডি লিখুন (যেমন: R101)">
+    <button onclick="checkBill()">বিল খুঁজুন</button>
+    <div id="billResult"></div>
+  </div>
+
+  <script>
+    const billData = {
+      "R101": { name: "Room 101", bills: { Jan: 450, Feb: 470, Mar: 430, Apr: 480, May: 500, Jun: 490, Jul: 460, Aug: 470, Sep: 450, Oct: 480, Nov: 460, Dec: 470 }},
+      "R102": { name: "Room 102", bills: { Jan: 420, Feb: 440, Mar: 410, Apr: 430, May: 450, Jun: 470, Jul: 430, Aug: 440, Sep: 420, Oct: 450, Nov: 430, Dec: 440 }},
+      "R103": { name: "Room 103", bills: { Jan: 400, Feb: 420, Mar: 410, Apr: 400, May: 410, Jun: 430, Jul: 420, Aug: 410, Sep: 400, Oct: 430, Nov: 410, Dec: 420 }},
+      "R104": { name: "Room 104", bills: { Jan: 390, Feb: 410, Mar: 400, Apr: 390, May: 420, Jun: 430, Jul: 410, Aug: 420, Sep: 410, Oct: 440, Nov: 420, Dec: 430 }}
+    };
+
+    function checkBill() {
+      const roomId = document.getElementById('roomId').value.trim().toUpperCase();
+      const resultDiv = document.getElementById('billResult');
+
+      if (billData[roomId]) {
+        const bills = billData[roomId].bills;
+        let table = `<h3>${billData[roomId].name}</h3><table><tr><th>মাস</th><th>বিল (৳)</th></tr>`;
+        for (const month in bills) {
+          table += `<tr><td>${month}</td><td>${bills[month]}</td></tr>`;
+        }
+        table += "</table>";
+        resultDiv.innerHTML = table;
+      } else {
+        resultDiv.innerHTML = "<p style='color:red;'>রুম আইডি খুঁজে পাওয়া যায়নি।</p>";
+      }
+    }
+
+    // Auto-fill if URL has ?room=R101
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const room = params.get("room");
+      if (room) {
+        document.getElementById("roomId").value = room;
+        checkBill();
+      }
+    };
+  </script>
+</body>
+</html>
