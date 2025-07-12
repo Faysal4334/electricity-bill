@@ -47,10 +47,74 @@
 
   <script>
     const billData = {
-      "R101": { name: "Room 5TH-C", bills: { Jan: 290, Feb: 120, Mar: 460, Apr: 660, May: 000, Jun: 000, Jul: 000, Aug: Not submitted yet, Sep: Not submitted yet, Oct: Not submitted yet, Nov: Not submitted yet, Dec: Not submitted yet }},
-      "R102": { name: "Room 5TH-D", bills: { Jan: 290, Feb: 360, Mar: 440, Apr: 1160, May: 990, Jun: 1250, Jul: 1000, Aug: Not submitted yet, Sep: Not submitted yet, Oct: Not submitted yet, Nov: Not submitted yet, Dec: Not submitted yet }},
-      "R103": { name: "Room 4TH-A", bills: { Jan: 510, Feb: 210, Mar: 580, Apr: 910, May: 670, Jun: 500, Jul: 700, Aug: Not submitted yet, Sep: Not submitted yet, Oct: Not submitted yet, Nov: Not submitted yet, Dec: Not submitted yet }},
-      "R104": { name: "Room 4TH-B", bills: { Jan: 1130, Feb: 1440, Mar: 1330, Apr: 000, May: 670, Jun: 1690, Jul: 1370, Aug: Not submitted yet, Sep: Not submitted yet, Oct: Not submitted yet, Nov: Not submitted yet, Dec: Not submitted yet }}
+      "R101": {
+        name: "Room 5TH-C",
+        bills: {
+          Jan: "290",
+          Feb: "120",
+          Mar: "460",
+          Apr: "660",
+          May: "000",
+          Jun: "000",
+          Jul: "000",
+          Aug: "Not submitted yet",
+          Sep: "Not submitted yet",
+          Oct: "Not submitted yet",
+          Nov: "Not submitted yet",
+          Dec: "Not submitted yet"
+        }
+      },
+      "R102": {
+        name: "Room 5TH-D",
+        bills: {
+          Jan: "290",
+          Feb: "360",
+          Mar: "440",
+          Apr: "1160",
+          May: "990",
+          Jun: "1250",
+          Jul: "1000",
+          Aug: "Not submitted yet",
+          Sep: "Not submitted yet",
+          Oct: "Not submitted yet",
+          Nov: "Not submitted yet",
+          Dec: "Not submitted yet"
+        }
+      },
+      "R103": {
+        name: "Room 4TH-A",
+        bills: {
+          Jan: "510",
+          Feb: "210",
+          Mar: "580",
+          Apr: "910",
+          May: "670",
+          Jun: "500",
+          Jul: "700",
+          Aug: "Not submitted yet",
+          Sep: "Not submitted yet",
+          Oct: "Not submitted yet",
+          Nov: "Not submitted yet",
+          Dec: "Not submitted yet"
+        }
+      },
+      "R104": {
+        name: "Room 4TH-B",
+        bills: {
+          Jan: "1130",
+          Feb: "1440",
+          Mar: "1330",
+          Apr: "000",
+          May: "670",
+          Jun: "1690",
+          Jul: "1370",
+          Aug: "Not submitted yet",
+          Sep: "Not submitted yet",
+          Oct: "Not submitted yet",
+          Nov: "Not submitted yet",
+          Dec: "Not submitted yet"
+        }
+      }
     };
 
     function checkBill() {
@@ -70,7 +134,6 @@
       }
     }
 
-    // Auto-fill if URL has ?room=R101
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       const room = params.get("room");
@@ -82,3 +145,6 @@
   </script>
 </body>
 </html>
+
+
+
